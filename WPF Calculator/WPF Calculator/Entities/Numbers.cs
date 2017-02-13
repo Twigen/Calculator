@@ -9,7 +9,7 @@ namespace WPF_Calculator.Entities
    public class Numbers
     {
         public int Id { get; set; }
-        public int Number { get; set; }
+        public string Number { get; set; }
         
     }
 }

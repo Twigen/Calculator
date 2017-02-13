@@ -28,7 +28,7 @@ namespace CalculatorTests
            // arrange
            
             Numbers number = new Numbers();
-            number.Number = 10;
+            number.Number = "10";
             // act
             bool result = _repository.AddNumber(number);
             // assert

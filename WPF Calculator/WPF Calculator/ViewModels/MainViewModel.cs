@@ -6,12 +6,15 @@ using System.Text;
 using System.Threading.Tasks;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using WPF_Calculator.Entities;
 using WPF_Calculator.Model;
 
 namespace WPF_Calculator.ViewModels
 {
     class MainViewModel :ViewModelBase
     {
+        private Repositories.NumberRepository _repository;
+        private string _saveResult;
         private string _operation;
         private bool _firstTime = false;
         private Model.Operations _operations;
@@ -74,6 +77,7 @@ namespace WPF_Calculator.ViewModels
         private void ExecuteOneButtonCommandAction()
         {
             MainTB += "1";
+            _saveResult += "1";
         }
 
         private RelayCommand _twoButtonCommand;
@@ -91,6 +95,7 @@ namespace WPF_Calculator.ViewModels
         private void ExecuteTwoButtonCommandAction()
         {
             MainTB += "2";
+            _saveResult += "2";
         }
 
         private RelayCommand _threeButtonCommand;
@@ -108,6 +113,7 @@ namespace WPF_Calculator.ViewModels
         private void ExecuteThreeButtonCommandAction()
         {
             MainTB += "3";
+            _saveResult += "3";
         }
 
         private RelayCommand _fourButtonCommand;
@@ -125,6 +131,7 @@ namespace WPF_Calculator.ViewModels
         private void ExecuteFourButtonCommandAction()
         {
             MainTB += "4";
+            _saveResult += "4";
         }
 
         private RelayCommand _fiveButtonCommand;
@@ -142,6 +149,7 @@ namespace WPF_Calculator.ViewModels
         private void ExecuteFiveButtonCommandAction()
         {
             MainTB += "5";
+            _saveResult += "5";
         }
 
         private RelayCommand _sixButtonCommand;
@@ -159,6 +167,7 @@ namespace WPF_Calculator.ViewModels
         private void ExecuteSixButtonCommandAction()
         {
             MainTB += "6";
+            _saveResult += "6";
         }
 
         private RelayCommand _sevenButtonCommand;
@@ -176,6 +185,7 @@ namespace WPF_Calculator.ViewModels
         private void ExecuteSevenButtonCommandAction()
         {
             MainTB += "7";
+            _saveResult += "7";
         }
 
         private RelayCommand _eightButtonCommand;
@@ -193,6 +203,7 @@ namespace WPF_Calculator.ViewModels
         private void ExecuteEightButtonCommandAction()
         {
             MainTB += "8";
+            _saveResult += "8";
         }
 
         private RelayCommand _nineButtonCommand;
@@ -210,6 +221,7 @@ namespace WPF_Calculator.ViewModels
         private void ExecuteNineButtonCommandAction()
         {
             MainTB += "9";
+            _saveResult += "9";
         }
 
         private RelayCommand _zeroButtonCommand;
@@ -227,6 +239,7 @@ namespace WPF_Calculator.ViewModels
         private void ExecuteZeroButtonCommandAction()
         {
             MainTB += "0";
+            _saveResult += "0";
         }
 
         private RelayCommand _addCommand;
@@ -244,6 +257,7 @@ namespace WPF_Calculator.ViewModels
         private void ExecuteAddCommandAction()
         {
             OperationTB = "+";
+            _saveResult += " + ";
             if (_firstTime && MainTB != "")
             {
                 ResultTB=_operations.DoOperation(MainTB, ResultTB, _operation);
@@ -272,6 +286,7 @@ namespace WPF_Calculator.ViewModels
         private void ExecuteSubtractCommandAction()
         {
             OperationTB = "-";
+            _saveResult += " - ";
             if (_firstTime && MainTB != "")
             {
                 ResultTB = _operations.DoOperation(MainTB, ResultTB, _operation);
@@ -300,6 +315,7 @@ namespace WPF_Calculator.ViewModels
         private void ExecuteMultiplyCommandAction()
         {
             OperationTB = "*";
+            _saveResult += " * ";
             if (_firstTime && MainTB != "")
             {
                 ResultTB = _operations.DoOperation(MainTB, ResultTB, _operation);
@@ -328,6 +344,7 @@ namespace WPF_Calculator.ViewModels
         private void ExecuteDivideCommandAction()
         {
             OperationTB = "/";
+            _saveResult += " / ";
             if (_firstTime && MainTB!="")
             {
                 ResultTB = _operations.DoOperation(MainTB, ResultTB, _operation);
@@ -339,6 +356,28 @@ namespace WPF_Calculator.ViewModels
             MainTB = "";
             _operation = "/";
             _firstTime = true;
+        }
+
+        private RelayCommand _equalsCommand;
+
+        public RelayCommand EqualsCommand
+        {
+            get
+            {
+                if (_equalsCommand == null)
+                    _equalsCommand = new RelayCommand(ExecuteEqualsCommandAction);
+                return _equalsCommand;
+            }
+        }
+
+        private void ExecuteEqualsCommandAction()
+        {
+            ResultTB = _operations.DoOperation(MainTB, ResultTB, _operation);
+            MainTB = "";
+            _saveResult += ResultTB;
+            Numbers number= new Numbers();
+            number.Number = _saveResult;
+            _repository.AddNumber(number);
         }
     }
 }
