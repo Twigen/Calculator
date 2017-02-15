@@ -1,0 +1,29 @@
+﻿<Window x:Class="WPF_Calculator.Views.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF_Calculator.Views"
+        xmlns:viewModels="clr-namespace:WPF_Calculator.ViewModels"
+        mc:Ignorable="d"
+        Title="LoginWindow" Height="300" Width="300">
+    <Grid>
+        <Grid.DataContext>
+            <viewModels:LoginViewModel/>
+        </Grid.DataContext>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0">
+            <Label>Login</Label>
+        <TextBox Grid.Row="0" Margin="5" Height="Auto" Background="Aqua" Text="{Binding Path=Login}"></TextBox>
+        </StackPanel>
+        <StackPanel Grid.Row="1">
+            <Label>Password</Label>
+            <TextBox Margin="5" Background="Aqua" Height="Auto" Text="{Binding Path=Password}"></TextBox>
+        </StackPanel>
+        <Button Grid.Row="2" Content="Login" Command="{Binding Path=LoginCommand}"></Button>
+    </Grid>
+</Window>

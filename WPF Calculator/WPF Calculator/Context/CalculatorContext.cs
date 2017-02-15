@@ -15,5 +15,6 @@ namespace WPF_Calculator.Context
             
         }
         public DbSet<Numbers> Numbers { get; set; }
+        public DbSet<User> User { get; set; } 
     }
 }

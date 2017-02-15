@@ -6,8 +6,10 @@ using System.Text;
 using System.Threading.Tasks;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using WPF_Calculator.Context;
 using WPF_Calculator.Entities;
 using WPF_Calculator.Model;
+using WPF_Calculator.Repositories;
 
 namespace WPF_Calculator.ViewModels
 {
@@ -24,7 +26,9 @@ namespace WPF_Calculator.ViewModels
 
         public MainViewModel()
         {
+            CalculatorContext context= new CalculatorContext();
             _operations=new Operations();
+            _repository = new NumberRepository(context);
             
         }
 
@@ -374,7 +378,7 @@ namespace WPF_Calculator.ViewModels
         {
             ResultTB = _operations.DoOperation(MainTB, ResultTB, _operation);
             MainTB = "";
-            _saveResult += ResultTB;
+            _saveResult += " = " + ResultTB;
             Numbers number= new Numbers();
             number.Number = _saveResult;
             _repository.AddNumber(number);

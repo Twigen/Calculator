@@ -12,14 +12,16 @@ using WPF_Calculator.Repositories;
 namespace CalculatorTests
 {
     [TestFixture]
-    public class ConnectionTest
+    public class NumberRepositoryTests
     {
        private  CalculatorContext _context = new CalculatorContext();
         private NumberRepository _repository;
+       
 
-        public ConnectionTest()
+        public NumberRepositoryTests()
         {
             _repository = new NumberRepository(_context);
+            
         }
 
         [Test]
@@ -43,5 +45,7 @@ namespace CalculatorTests
             //assert
             Assert.IsNotEmpty(AllNumbers);
         }
+
+        
     }
 }
