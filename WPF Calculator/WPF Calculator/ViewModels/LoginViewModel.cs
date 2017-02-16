@@ -64,12 +64,16 @@ namespace WPF_Calculator.ViewModels
             int id =_userRepository.ValidateUser(Login, Password);
             if (id != 0)
             {
+                MainViewModel.Id = id;
                 MessageBox.Show("Login poprawny");
+                new MainWindow().Show();
             }
             else
             {
                 MessageBox.Show("Login bledny");
             }
+            
+            
         }
     }
 }

@@ -4,12 +4,14 @@ using System.Linq;
 using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using WPF_Calculator.Context;
 using WPF_Calculator.Entities;
 using WPF_Calculator.Model;
 using WPF_Calculator.Repositories;
+using WPF_Calculator.UserService;
 
 namespace WPF_Calculator.ViewModels
 {
@@ -20,16 +22,19 @@ namespace WPF_Calculator.ViewModels
         private string _operation;
         private bool _firstTime = false;
         private Model.Operations _operations;
-
+        private UserService.UserService _userService;
         private const string _ResultPropertyName = "ResultTB";
         private string _Result;
+        public static int Id;
 
         public MainViewModel()
         {
             CalculatorContext context= new CalculatorContext();
             _operations=new Operations();
             _repository = new NumberRepository(context);
-            
+            _userService = new UserService.UserService(context);
+            User user = _userService.GetCurrentlyLogedUser(Id);
+            MessageBox.Show("Witaj" + user.Name + user.Surname);
         }
 
         public string ResultTB

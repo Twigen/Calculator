@@ -119,6 +119,7 @@
     <Compile Include="Model\Operations.cs" />
     <Compile Include="Repositories\NumberRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
+    <Compile Include="UserService\UserService.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="Views\LoginWindow.xaml.cs">
