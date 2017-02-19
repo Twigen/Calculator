@@ -11,40 +11,55 @@
         <Grid.DataContext>
             <viewModels:MainViewModel/>
         </Grid.DataContext>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition />
         </Grid.RowDefinitions>
-        <TextBox x:Name="ResultTB" Grid.ColumnSpan="4" Background="Aqua" Margin="5" Text="{Binding Path=ResultTB}"></TextBox>
-        <TextBox x:Name="MainTB" Grid.ColumnSpan="5" Background="Aqua" Margin="5" Grid.Row="1" Text="{Binding Path=MainTB}"></TextBox>
-        <TextBox x:Name="OperationTB" Grid.Column="4" Margin="5" Text="{Binding Path=OperationTB}"></TextBox>
-        <Button Grid.Column="0" Grid.Row="2" Margin="5" Content="1" Command="{Binding Path=OneButtonCommand}"></Button>
-        <Button Grid.Column="1" Grid.Row="2" Margin="5" Content="2" Command="{Binding Path=TwoButtonCommand}"></Button>
-        <Button Grid.Column="2" Grid.Row="2" Margin="5" Content="3" Command="{Binding Path=ThreeButtonCommand}"></Button>
-        <Button Grid.Column="0" Grid.Row="3" Margin="5" Content="4" Command="{Binding Path=FourButtonCommand}"></Button>
-        <Button Grid.Column="1" Grid.Row="3" Margin="5" Content="5" Command="{Binding Path=FiveButtonCommand}"></Button>
-        <Button Grid.Column="2" Grid.Row="3" Margin="5" Content="6" Command="{Binding Path=SixButtonCommand}"></Button>
-        <Button Grid.Column="0" Grid.Row="4" Margin="5" Content="7" Command="{Binding Path=SevenButtonCommand}"></Button>
-        <Button Grid.Column="1" Grid.Row="4" Margin="5" Content="8" Command="{Binding Path=EightButtonCommand}"></Button>
-        <Button Grid.Column="2" Grid.Row="4" Margin="5" Content="9" Command="{Binding Path=NineButtonCommand}"></Button>
-        <Button Grid.Column="0" Grid.Row="5" Margin="5" Content="0" Grid.ColumnSpan="2" Command="{Binding Path=ZeroButtonCommand}"></Button>
-        <Button Grid.Column="2" Grid.Row="5" Margin="5" Content=","></Button>
-        <Button Grid.Column="3" Grid.Row="2" Margin="5" Content="C" Grid.ColumnSpan="2"></Button>
-        <Button Grid.Column="3" Grid.Row="3" Margin="5" Content="+" Command="{Binding Path=AddCommand}"></Button>
-        <Button Grid.Column="4" Grid.Row="3" Margin="5" Content="-" Command="{Binding Path=SubtractCommand}"></Button>
-        <Button Grid.Column="3" Grid.Row="4" Margin="5" Content="*" Command="{Binding Path=MultiplyCommand }"></Button>
-        <Button Grid.Column="3" Grid.Row="5" Margin="5" Content="/" Command="{Binding Path=DivideCommand}"></Button>
-        <Button Grid.Column="4" Grid.Row="4" Margin="5" Content="=" Grid.RowSpan="2" Command="{Binding Path=EqualsCommand}"></Button>
+        <TextBlock>
+            <TextBlock.Text>
+                <MultiBinding StringFormat="Witaj {0} {1}">
+                    <Binding Path="User.Name"/>
+                    <Binding Path="User.Surname"/>
+                </MultiBinding>
+            </TextBlock.Text>
+        </TextBlock>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <TextBox x:Name="ResultTB" Grid.ColumnSpan="4" Background="Aqua" Margin="5" Text="{Binding Path=ResultTB}"></TextBox>
+            <TextBox x:Name="MainTB" Grid.ColumnSpan="5" Background="Aqua" Margin="5" Grid.Row="1" Text="{Binding Path=MainTB}"></TextBox>
+            <TextBox x:Name="OperationTB" Grid.Column="4" Margin="5" Text="{Binding Path=OperationTB}"></TextBox>
+            <Button Grid.Column="0" Grid.Row="2" Margin="5" Content="1" Command="{Binding Path=DigitCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Content}"/>
+            <Button Grid.Column="1" Grid.Row="2" Margin="5" Content="2" Command="{Binding Path=DigitCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Content}"/>
+            <Button Grid.Column="2" Grid.Row="2" Margin="5" Content="3" Command="{Binding Path=DigitCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Content}"/>
+            <Button Grid.Column="0" Grid.Row="3" Margin="5" Content="4" Command="{Binding Path=DigitCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Content}"/>
+            <Button Grid.Column="1" Grid.Row="3" Margin="5" Content="5" Command="{Binding Path=DigitCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Content}"/>
+            <Button Grid.Column="2" Grid.Row="3" Margin="5" Content="6" Command="{Binding Path=DigitCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Content}"/>
+            <Button Grid.Column="0" Grid.Row="4" Margin="5" Content="7" Command="{Binding Path=DigitCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Content}"/>
+            <Button Grid.Column="1" Grid.Row="4" Margin="5" Content="8" Command="{Binding Path=DigitCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Content}"/>
+            <Button Grid.Column="2" Grid.Row="4" Margin="5" Content="9" Command="{Binding Path=DigitCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Content}"/>
+            <Button Grid.Column="0" Grid.Row="5" Margin="5" Content="0" Grid.ColumnSpan="2" Command="{Binding Path=ZeroButtonCommand}"></Button>
+            <Button Grid.Column="2" Grid.Row="5" Margin="5" Content=","></Button>
+            <Button Grid.Column="3" Grid.Row="2" Margin="5" Content="C" Grid.ColumnSpan="2"></Button>
+            <Button Grid.Column="3" Grid.Row="3" Margin="5" Content="+" Command="{Binding Path=AddCommand}"></Button>
+            <Button Grid.Column="4" Grid.Row="3" Margin="5" Content="-" Command="{Binding Path=SubtractCommand}"></Button>
+            <Button Grid.Column="3" Grid.Row="4" Margin="5" Content="*" Command="{Binding Path=MultiplyCommand }"></Button>
+            <Button Grid.Column="3" Grid.Row="5" Margin="5" Content="/" Command="{Binding Path=DivideCommand}"></Button>
+            <Button Grid.Column="4" Grid.Row="4" Margin="5" Content="=" Grid.RowSpan="2" Command="{Binding Path=EqualsCommand}"></Button>
+        </Grid>
     </Grid>
+   
 </Window>

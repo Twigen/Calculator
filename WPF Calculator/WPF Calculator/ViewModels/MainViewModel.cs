@@ -37,6 +37,8 @@ namespace WPF_Calculator.ViewModels
             MessageBox.Show("Witaj" + user.Name + user.Surname);
         }
 
+        public User User => _userService.GetCurrentlyLogedUser(Id);
+
         public string ResultTB
         {
             get { return _Result; }
@@ -59,6 +61,7 @@ namespace WPF_Calculator.ViewModels
                 RaisePropertyChanged(_OperationTBPropertyName);
             }
         }
+
         private const string _MainTbPropertyName = "MainTB";
         private string _MainTb;
 
@@ -71,160 +74,22 @@ namespace WPF_Calculator.ViewModels
                 RaisePropertyChanged(_MainTbPropertyName);
             }
         }
-        private RelayCommand _oneButtonCommand;
 
-        public RelayCommand OneButtonCommand
+        private RelayCommand<string> _digitCommand;
+
+        public RelayCommand<string> DigitCommand
         {
             get
             {
-                if (_oneButtonCommand == null)
-                    _oneButtonCommand = new RelayCommand(ExecuteOneButtonCommandAction);
-                return _oneButtonCommand;
+                if (_digitCommand == null)
+                    _digitCommand = new RelayCommand<string>(ExecuteDigitCommandAction);
+                return _digitCommand;
             }
         }
 
-        private void ExecuteOneButtonCommandAction()
+        private void ExecuteDigitCommandAction(string digit)
         {
-            MainTB += "1";
-            _saveResult += "1";
-        }
-
-        private RelayCommand _twoButtonCommand;
-
-        public RelayCommand TwoButtonCommand
-        {
-            get
-            {
-                if (_twoButtonCommand == null)
-                    _twoButtonCommand = new RelayCommand(ExecuteTwoButtonCommandAction);
-                return _twoButtonCommand;
-            }
-        }
-
-        private void ExecuteTwoButtonCommandAction()
-        {
-            MainTB += "2";
-            _saveResult += "2";
-        }
-
-        private RelayCommand _threeButtonCommand;
-
-        public RelayCommand ThreeButtonCommand
-        {
-            get
-            {
-                if (_threeButtonCommand == null)
-                    _threeButtonCommand = new RelayCommand(ExecuteThreeButtonCommandAction);
-                return _threeButtonCommand;
-            }
-        }
-
-        private void ExecuteThreeButtonCommandAction()
-        {
-            MainTB += "3";
-            _saveResult += "3";
-        }
-
-        private RelayCommand _fourButtonCommand;
-
-        public RelayCommand FourButtonCommand
-        {
-            get
-            {
-                if (_fourButtonCommand == null)
-                    _fourButtonCommand = new RelayCommand(ExecuteFourButtonCommandAction);
-                return _fourButtonCommand;
-            }
-        }
-
-        private void ExecuteFourButtonCommandAction()
-        {
-            MainTB += "4";
-            _saveResult += "4";
-        }
-
-        private RelayCommand _fiveButtonCommand;
-
-        public RelayCommand FiveButtonCommand
-        {
-            get
-            {
-                if (_fiveButtonCommand == null)
-                    _fiveButtonCommand = new RelayCommand(ExecuteFiveButtonCommandAction);
-                return _fiveButtonCommand;
-            }
-        }
-
-        private void ExecuteFiveButtonCommandAction()
-        {
-            MainTB += "5";
-            _saveResult += "5";
-        }
-
-        private RelayCommand _sixButtonCommand;
-
-        public RelayCommand SixButtonCommand
-        {
-            get
-            {
-                if (_sixButtonCommand == null)
-                    _sixButtonCommand = new RelayCommand(ExecuteSixButtonCommandAction);
-                return _sixButtonCommand;
-            }
-        }
-
-        private void ExecuteSixButtonCommandAction()
-        {
-            MainTB += "6";
-            _saveResult += "6";
-        }
-
-        private RelayCommand _sevenButtonCommand;
-
-        public RelayCommand SevenButtonCommand
-        {
-            get
-            {
-                if (_sevenButtonCommand == null)
-                    _sevenButtonCommand = new RelayCommand(ExecuteSevenButtonCommandAction);
-                return _sevenButtonCommand;
-            }
-        }
-
-        private void ExecuteSevenButtonCommandAction()
-        {
-            MainTB += "7";
-            _saveResult += "7";
-        }
-
-        private RelayCommand _eightButtonCommand;
-
-        public RelayCommand EightButtonCommand
-        {
-            get
-            {
-                if (_eightButtonCommand == null)
-                    _eightButtonCommand = new RelayCommand(ExecuteEightButtonCommandAction);
-                return _eightButtonCommand;
-            }
-        }
-
-        private void ExecuteEightButtonCommandAction()
-        {
-            MainTB += "8";
-            _saveResult += "8";
-        }
-
-        private RelayCommand _nineButtonCommand;
-
-        public RelayCommand NineButtonCommand
-        {
-            get
-            {
-                if (_nineButtonCommand == null)
-                    _nineButtonCommand = new RelayCommand(ExecuteNineButtonCommandAction);
-                return _nineButtonCommand;
-            }
+            
         }
 
         private void ExecuteNineButtonCommandAction()

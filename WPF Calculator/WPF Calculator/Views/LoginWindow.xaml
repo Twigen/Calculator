@@ -16,14 +16,22 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0">
-            <Label>Login</Label>
-        <TextBox Grid.Row="0" Margin="5" Height="Auto" Background="Aqua" Text="{Binding Path=Login}"></TextBox>
-        </StackPanel>
-        <StackPanel Grid.Row="1">
-            <Label>Password</Label>
-            <TextBox Margin="5" Background="Aqua" Height="Auto" Text="{Binding Path=Password}"></TextBox>
-        </StackPanel>
+        <Grid Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Label Content="Login"/>
+            <TextBox Grid.Row="1" Margin="5" Height="Auto" Background="Aqua" Text="{Binding Path=Login}" FontSize="20"/>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Label Content="Password"/>
+            <TextBox Grid.Row="1" Margin="5" Background="Aqua" Text="{Binding Path=Password}" FontSize="20"/>
+        </Grid>
         <Button Grid.Row="2" Content="Login" Command="{Binding Path=LoginCommand}"></Button>
     </Grid>
 </Window>

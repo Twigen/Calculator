@@ -13,5 +13,6 @@ namespace WPF_Calculator.Entities
         public string Password { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
+        ICollection<Numbers> Numberses { get; set; } 
     }
 }

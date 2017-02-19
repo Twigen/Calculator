@@ -15,7 +15,18 @@ namespace WPF_Calculator.Model
                 switch (op)
                 {
                     case "+":
-                        return (Convert.ToInt32(first) + Convert.ToInt32(second)).ToString();
+                        //int x;
+                        //int.TryParse(first, out x);
+                        //if (x == 0)
+                        //    return string.Empty;
+
+                        //int y;
+                        //int.TryParse(second, out y);
+                        //if (y == 0)
+                        //    return string.Empty;
+
+                        //return (x + y).ToString();
+                      return (Convert.ToInt32(first) + Convert.ToInt32(second)).ToString();
                     case "-":
                         return (Convert.ToInt32(second) - Convert.ToInt32(first)).ToString();
                     case "*":

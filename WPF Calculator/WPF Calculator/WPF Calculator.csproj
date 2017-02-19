@@ -115,6 +115,10 @@
     <Compile Include="Migrations\201702141836310_User.Designer.cs">
       <DependentUpon>201702141836310_User.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201702191144329_Relation.cs" />
+    <Compile Include="Migrations\201702191144329_Relation.Designer.cs">
+      <DependentUpon>201702191144329_Relation.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Operations.cs" />
     <Compile Include="Repositories\NumberRepository.cs" />
@@ -152,6 +156,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201702141836310_User.resx">
       <DependentUpon>201702141836310_User.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702191144329_Relation.resx">
+      <DependentUpon>201702191144329_Relation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

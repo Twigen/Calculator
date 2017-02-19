@@ -46,6 +46,17 @@ namespace CalculatorTests
             Assert.IsNotEmpty(AllNumbers);
         }
 
+        [Test]
+        public void ShouldReturnNumberListFromDatabase()
+        {
+            //arrange
+
+            //act
+            List<string> listOfNumbers = _repository.GetUserNumbersList(1);
+
+            //assert
+            Assert.IsNotEmpty(listOfNumbers);
+        }
         
     }
 }

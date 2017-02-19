@@ -15,7 +15,7 @@ namespace WPF_Calculator.UserService
         public static int Id;
         private readonly CalculatorContext _context;
         private readonly DbSet<User> _users;
-        private UserRepository _userRepository;
+        private readonly UserRepository _userRepository;
 
         public UserService(CalculatorContext context)
         {

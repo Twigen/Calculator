@@ -72,8 +72,6 @@ namespace WPF_Calculator.ViewModels
             {
                 MessageBox.Show("Login bledny");
             }
-            
-            
         }
     }
 }

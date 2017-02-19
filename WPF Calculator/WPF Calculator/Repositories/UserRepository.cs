@@ -22,13 +22,10 @@ namespace WPF_Calculator.Repositories
 
         public int ValidateUser(string login, string password)
         {
-           
             User user = _users.FirstOrDefault(x => x.Login == login && x.Password == password);
 
             if (user==null)
-            {
                 return 0;
-            }
             
             return user.Id;
         }
