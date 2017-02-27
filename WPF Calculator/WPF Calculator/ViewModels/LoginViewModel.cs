@@ -8,6 +8,7 @@ using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using WPF_Calculator.Context;
 using WPF_Calculator.Repositories;
+using WPF_Calculator.Views;
 
 namespace WPF_Calculator.ViewModels
 {
@@ -64,7 +65,8 @@ namespace WPF_Calculator.ViewModels
             int id =_userRepository.ValidateUser(Login, Password);
             if (id != 0)
             {
-                MainViewModel.Id = id;
+                Entities.User activeUser = _userRepository.GetUserById(id);
+                UserService.UserService.AssignLoggedInUser(activeUser);
                 MessageBox.Show("Login poprawny");
                 new MainWindow().Show();
             }
@@ -72,6 +74,23 @@ namespace WPF_Calculator.ViewModels
             {
                 MessageBox.Show("Login bledny");
             }
+        }
+
+        private RelayCommand _signUpCommand;
+
+        public RelayCommand SignUpCommand
+        {
+            get
+            {
+                if (_signUpCommand == null)
+                    _signUpCommand = new RelayCommand(ExecuteSignUpCommandAction);
+                return _signUpCommand;
+            }
+        }
+
+        private void ExecuteSignUpCommandAction()
+        {
+            new AddUserWindow().Show();
         }
     }
 }

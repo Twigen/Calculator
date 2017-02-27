@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net.NetworkInformation;
 using System.Text;
@@ -12,6 +13,7 @@ using WPF_Calculator.Entities;
 using WPF_Calculator.Model;
 using WPF_Calculator.Repositories;
 using WPF_Calculator.UserService;
+using WPF_Calculator.Views;
 
 namespace WPF_Calculator.ViewModels
 {
@@ -22,22 +24,18 @@ namespace WPF_Calculator.ViewModels
         private string _operation;
         private bool _firstTime = false;
         private Model.Operations _operations;
-        private UserService.UserService _userService;
         private const string _ResultPropertyName = "ResultTB";
         private string _Result;
-        public static int Id;
+        
 
         public MainViewModel()
         {
             CalculatorContext context= new CalculatorContext();
             _operations=new Operations();
             _repository = new NumberRepository(context);
-            _userService = new UserService.UserService(context);
-            User user = _userService.GetCurrentlyLogedUser(Id);
-            MessageBox.Show("Witaj" + user.Name + user.Surname);
         }
 
-        public User User => _userService.GetCurrentlyLogedUser(Id);
+        public string UserName => UserService.UserService.UserFullName;
 
         public string ResultTB
         {
@@ -89,14 +87,11 @@ namespace WPF_Calculator.ViewModels
 
         private void ExecuteDigitCommandAction(string digit)
         {
-            
+            MainTB += digit;
+            _saveResult += digit;
         }
 
-        private void ExecuteNineButtonCommandAction()
-        {
-            MainTB += "9";
-            _saveResult += "9";
-        }
+        
 
         private RelayCommand _zeroButtonCommand;
 
@@ -250,8 +245,26 @@ namespace WPF_Calculator.ViewModels
             MainTB = "";
             _saveResult += " = " + ResultTB;
             Numbers number= new Numbers();
+            number.UserId = UserService.UserService.LoggedInUserId;
             number.Number = _saveResult;
             _repository.AddNumber(number);
+        }
+
+        private RelayCommand _openHistoricalViewCommand;
+
+        public RelayCommand OpenHistoricalViewCommand
+        {
+            get
+            {
+                if (_openHistoricalViewCommand == null)
+                    _openHistoricalViewCommand = new RelayCommand(ExecuteOpenHistoricalViewCommandAction);
+                return _openHistoricalViewCommand;
+            }
+        }
+
+        private void ExecuteOpenHistoricalViewCommandAction()
+        {
+            new HistoricalWindow().Show();
         }
     }
 }

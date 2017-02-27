@@ -7,10 +7,12 @@ namespace WPF_Calculator.Migrations
     {
         public override void Up()
         {
+            AddColumn("dbo.Numbers", "UserId", c => c.Int());
         }
         
         public override void Down()
         {
+            DropColumn("dbo.Numbers", "UserId");
         }
     }
 }

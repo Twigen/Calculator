@@ -88,6 +88,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Views\AddUserWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\HistoricalWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\LoginWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -115,17 +123,29 @@
     <Compile Include="Migrations\201702141836310_User.Designer.cs">
       <DependentUpon>201702141836310_User.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201702191144329_Relation.cs" />
-    <Compile Include="Migrations\201702191144329_Relation.Designer.cs">
-      <DependentUpon>201702191144329_Relation.cs</DependentUpon>
+    <Compile Include="Migrations\201702191936460_Relation.cs" />
+    <Compile Include="Migrations\201702191936460_Relation.Designer.cs">
+      <DependentUpon>201702191936460_Relation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201702271707007_Index.cs" />
+    <Compile Include="Migrations\201702271707007_Index.Designer.cs">
+      <DependentUpon>201702271707007_Index.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Operations.cs" />
     <Compile Include="Repositories\NumberRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="UserService\UserService.cs" />
+    <Compile Include="ViewModels\AddUserViewModel.cs" />
+    <Compile Include="ViewModels\HistoricalViewModels.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="Views\AddUserWindow.xaml.cs">
+      <DependentUpon>AddUserWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\HistoricalWindow.xaml.cs">
+      <DependentUpon>HistoricalWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
@@ -157,8 +177,11 @@
     <EmbeddedResource Include="Migrations\201702141836310_User.resx">
       <DependentUpon>201702141836310_User.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201702191144329_Relation.resx">
-      <DependentUpon>201702191144329_Relation.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201702191936460_Relation.resx">
+      <DependentUpon>201702191936460_Relation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702271707007_Index.resx">
+      <DependentUpon>201702271707007_Index.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

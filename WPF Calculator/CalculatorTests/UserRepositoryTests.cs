@@ -56,5 +56,17 @@ namespace CalculatorTests
             // assert
             Assert.AreEqual(Id, 0);
         }
+
+        [Test]
+        public void ShouldCheckUserLogin()
+        {
+            //arrange
+            string userLogin = "norbert";
+            //act
+            bool loginCheck = _userRepository.ValidateUserLogin(userLogin);
+            //assert
+            Assert.False(loginCheck);
+
+        }
     }
 }

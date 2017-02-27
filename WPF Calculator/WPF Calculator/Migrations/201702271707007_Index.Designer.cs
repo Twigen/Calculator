@@ -7,13 +7,13 @@ namespace WPF_Calculator.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class Relation : IMigrationMetadata
+    public sealed partial class Index : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Relation));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Index));
         
         string IMigrationMetadata.Id
         {
-            get { return "201702191144329_Relation"; }
+            get { return "201702271707007_Index"; }
         }
         
         string IMigrationMetadata.Source

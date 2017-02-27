@@ -57,6 +57,21 @@ namespace CalculatorTests
             //assert
             Assert.IsNotEmpty(listOfNumbers);
         }
+
+        [Test]
+        public void ShouldAddNumberWithUser()
+        {
+            //arrange
+            Numbers numbers = new Numbers();
+            numbers.Number = "test string";
+            numbers.UserId = 1;
+            //act
+            bool result = _repository.AddNumber(numbers);
+
+            //assert
+            Assert.IsTrue(result);
+            Assert.Greater(numbers.Id,0);
+        }
         
     }
 }

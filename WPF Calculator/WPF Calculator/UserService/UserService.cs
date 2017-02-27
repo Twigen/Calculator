@@ -12,22 +12,32 @@ namespace WPF_Calculator.UserService
 {
     public class UserService
     {
-        public static int Id;
-        private readonly CalculatorContext _context;
-        private readonly DbSet<User> _users;
-        private readonly UserRepository _userRepository;
 
-        public UserService(CalculatorContext context)
+        private static User _loggedInUser;
+
+        public static int LoggedInUserId
         {
-            _context = context;
-            _users = context.User;
-            _userRepository = new UserRepository(context);
+            get { return _loggedInUser?.Id ?? 0; }
         }
 
-        public User GetCurrentlyLogedUser(int Id)
+        public static string UserFullName
         {
-            return _userRepository.GetUserById(Id);
+            get
+            {
+                if (_loggedInUser == null)
+                {
+                    return "";
+                }
+                else
+                {
+                    return _loggedInUser.Name + " " + _loggedInUser.Surname;
+                }
+            }
         }
 
+        public static void AssignLoggedInUser(User user)
+        {
+            _loggedInUser = user;
+        }
     }
 }

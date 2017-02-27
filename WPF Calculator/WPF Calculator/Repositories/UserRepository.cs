@@ -35,5 +35,26 @@ namespace WPF_Calculator.Repositories
             User user = _users.FirstOrDefault(x => x.Id == Id);
             return user;
         }
+
+        public bool ValidateUserLogin(string login)
+        {
+            User user =_users.FirstOrDefault(x => x.Login == login);
+            if (user == null)
+                return true;
+            else
+            {
+                return false;
+            }
+        }
+
+        public void AddUser(string login, string password, string name, string surname)
+        {
+            User user = new User();
+            user.Login = login;
+            user.Password = password;
+            user.Name = name;
+            user.Surname = surname;
+            _users.Add(user);
+        }
     }
 }

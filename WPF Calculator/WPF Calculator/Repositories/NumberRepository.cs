@@ -16,6 +16,7 @@ namespace WPF_Calculator.Repositories
 
         public NumberRepository(CalculatorContext context)
         {
+            
             _context = context;
             _numbers = _context.Numbers;
         }

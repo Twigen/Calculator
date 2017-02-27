@@ -6,24 +6,28 @@
         xmlns:viewModels="clr-namespace:WPF_Calculator.ViewModels"
         xmlns:local="clr-namespace:WPF_Calculator"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
+        Title="MainWindow" Height="351.2" Width="528.6">
+    <Grid Margin="0,0,0.4,-29.2">
         <Grid.DataContext>
             <viewModels:MainViewModel/>
         </Grid.DataContext>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition />
+            <RowDefinition/>
+            <RowDefinition Height="57.6"/>
+            
         </Grid.RowDefinitions>
-        <TextBlock>
+        <TextBlock Margin="0,0,-1,0">
             <TextBlock.Text>
-                <MultiBinding StringFormat="Witaj {0} {1}">
-                    <Binding Path="User.Name"/>
-                    <Binding Path="User.Surname"/>
+                <MultiBinding StringFormat="Witaj {0} !">
+                    <Binding Path="UserName"/>
                 </MultiBinding>
             </TextBlock.Text>
         </TextBlock>
-        <Grid Grid.Row="1">
+        <Grid Grid.Row="2" Margin="0,9.8,1,-6.2">
+            <Button Content="Show Historical Numbers " Command="{Binding Path=OpenHistoricalViewCommand}" Margin="0,-20,-0.4,10"/>
+        </Grid>
+        <Grid Grid.Row="1" Margin="0,0,0,5.8">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
@@ -61,5 +65,5 @@
             <Button Grid.Column="4" Grid.Row="4" Margin="5" Content="=" Grid.RowSpan="2" Command="{Binding Path=EqualsCommand}"></Button>
         </Grid>
     </Grid>
-   
+
 </Window>
